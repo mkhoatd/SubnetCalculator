@@ -19,6 +19,12 @@ namespace SubnetToBit
         
         private void button1_Click(object sender, EventArgs e)
         {
+            textBox3.Text = "";
+            textBox4.Text=  "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            textBox7.Text = "";
+            textBox8.Text = "";
             if (textBox2.Text.Length > 0)
             {
                 string[] sm = textBox2.Text.Split('.');
