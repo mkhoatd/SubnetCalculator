@@ -22,22 +22,30 @@ namespace SubnetToBit
             if (textBox2.Text.Length > 0)
             {
                 string[] sm = textBox2.Text.Split('.');
-                int MaskSize = 0;
-                for (int i = 0; i < sm.Length; i++)
+                if(sm.Length==1)
                 {
-                    sm[i] = Convert.ToString(Int32.Parse(sm[i]), 2);
+                    textBox3.Text=sm[0];
                 }
-                foreach (string s in sm)
+                else
                 {
-                    foreach (char c in s)
+                    int MaskSize = 0;
+                    for (int i = 0; i < sm.Length; i++)
                     {
-                        if (c == '1')
+                        sm[i] = Convert.ToString(Int32.Parse(sm[i]), 2);
+                    }
+                    foreach (string s in sm)
+                    {
+                        foreach (char c in s)
                         {
-                            MaskSize++;
+                            if (c == '1')
+                            {
+                                MaskSize++;
+                            }
                         }
                     }
+                    this.textBox3.Text = Convert.ToString(MaskSize);
                 }
-                this.textBox3.Text = Convert.ToString(MaskSize);
+
             }
             if (textBox1.Text.Length > 0)
             {
@@ -54,6 +62,18 @@ namespace SubnetToBit
                 }
 
                 this.textBox7.Text = ipBinary[0]+'.'+ipBinary[1]+'.'+ipBinary[2]+'.'+ipBinary[3];
+                if (Int32.Parse(ip[0]) < 128) textBox8.Text = "A-8";
+                if (Int32.Parse(ip[0]) >= 128 && Int32.Parse(ip[0]) < 192) textBox8.Text = "B-16";
+                if (Int32.Parse(ip[0]) >= 192 && Int32.Parse(ip[0]) < 224) textBox8.Text = "C-24";
+                if (Int32.Parse(ip[0]) >= 224 && Int32.Parse(ip[0]) < 240) textBox8.Text = "D-32";
+                if (Int32.Parse(ip[0]) >= 240 && Int32.Parse(ip[0]) < 248) textBox8.Text = "E";
+                if (Int32.Parse(ip[0]) >= 248 && Int32.Parse(ip[0]) < 252) textBox8.Text = "F";
+                if (Int32.Parse(ip[0]) >= 252 && Int32.Parse(ip[0]) < 254) textBox8.Text = "G";
+                if (Int32.Parse(ip[0]) >= 254 && Int32.Parse(ip[0]) < 255) textBox8.Text = "H";
+            }
+            if ((textBox8.Text.Length >0)&&(textBox3.Text.Length>0))
+            {
+
             }
         }
     }
